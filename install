@@ -4,32 +4,30 @@ set -x
 
 export MIKAELA_GREP=$HOME/.MIKAELA_GREP
 
-cat bashrc > ~/.bashrc
-cat tmux.conf > ~/.tmux.conf
-cat zshrc > ~/.zshrc
-cat gitconfig > ~/.gitconfig
-cat vimrc > ~/.vimrc
+cat rc/bashrc > ~/.bashrc
+cat conf/tmux.conf > ~/.tmux.conf
+cat rc/zshrc > ~/.zshrc
+cat conf/gitconfig > ~/.gitconfig
+cat rc/vimrc > ~/.vimrc
 if [ ! -f ~/.oidentd.conf ]; then
-    cat oidentd.conf > ~/.oidentd.conf
+    cat conf/oidentd.conf > ~/.oidentd.conf
 fi
 mkdir -p ~/.gnupg
-cat gpg.conf > ~/.gnupg/gpg.conf
-cat gpg-agent.conf > ~/.gnupg/gpg-agent.conf
-cat sks-keyservers.netCA.pem > ~/.gnupg/sks-keyservers.netCA.pem
-cat xsessionrc > ~/.xsessionrc
-cat xinitrc > ~/.xinitrc
-cat pastebinit.xml > ~/.pastebinit.xml
-cat Xdefaults > ~/.Xdefaults
+cat gpg/gpg.conf > ~/.gnupg/gpg.conf
+cat gpg/gpg-agent.conf > ~/.gnupg/gpg-agent.conf
+cat gpg/sks-keyservers.netCA.pem > ~/.gnupg/sks-keyservers.netCA.pem
+cat rc/xsessionrc > ~/.xsessionrc
+cat rc/xinitrc > ~/.xinitrc
+cat conf/pastebinit.xml > ~/.pastebinit.xml
+cat conf/Xdefaults > ~/.Xdefaults
 mkdir -p ~/.inxi
-cat inxi.conf > ~/.inxi/inxi.conf
+cat conf/inxi.conf > ~/.inxi/inxi.conf
 gpg --quiet --import .keys/0x4DB53CFE82A46728.asc&
 gpg --quiet --import .keys/0xDAA6CA08F2E96AC7.asc&
 gpg --quiet --import .keys/0x0C207F07B2F32B67.asc&
 mkdir -p ~/.ssh
 chmod a+xr chmod
 bash -x ./chmod&
-cat chmod > ~/chmod
-chmod a+xr ~/chmod
 
 if [ -f $HOME/.MIKAELAGREP ]
 then
@@ -38,8 +36,7 @@ fi
 
 if [ -f "$MIKAELA_GREP" ]
 then
-    echo "MIKAELA_GREP has been used previously, Installing/Upgrading."
-    bash -x ./.install.MIKAELA_GREP.run
+    bash -x .mikaela/install
 fi
 
 set +x
