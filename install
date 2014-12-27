@@ -36,7 +36,7 @@ fi
 
 if [ -f "$MIKAELA_GREP" ]
 then
-    bash -x .mikaela/install
+    bash -x .mikaela_install
 fi
 
 set +x
